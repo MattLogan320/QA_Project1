@@ -5,6 +5,8 @@ This Project looks to create a web application that demonstrates CRUD functional
 The information used to demonstrate this CRUD functionality is stored in an SQL database (specifically using MySQL), which comprised of (X number tables) that shared a relationship (one-to-many relationships, but using connector tables to demonstarte a many-to-many relationship). The app was then built up using the Flask micro-framework. This was all specifically done to meet the brief for this project.
 
 
+
+
 **App Design:**
 
 For this project I decided to design a library app which allows users (staff) to upload new books to the library (Create), users to view the library of books available (staff and customers) (Read), update books available to borrow (Update) and remove any books from the library that are no longer part of the library (Delete)(staff). The MVP of this database is a books table and a customers table with each customer associated to either no books or many. To extend on this the authors of books was added, with the authors table being created with a relationship to the books table, where every book had at least one author associated with it.

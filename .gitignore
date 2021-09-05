@@ -1,0 +1,7 @@
+venv/
+#This ignores the virtual environment files created when setting up the venv
+__pycache__ 
+*.pyc
+#These ignore the cache files created when running unit tests
+chromium/
+#This ignores the chromium directory needed for steting 

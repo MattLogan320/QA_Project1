@@ -1,0 +1,35 @@
+{% extends "layouts.html" %}
+{% block body_content %}
+<br>
+<h1>Select Book to lend to Customer</h1>
+        <div class='form'>
+                <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.book.label }}
+                {{ form.book }}
+                <br>
+                {{ form.customer.label }}
+                {{ form.customer }}
+                <br>
+                {{ form.submit }}
+                </form>
+                </div>
+<p>Customers</p>
+{% for customer in customerList  %}
+	<div>
+		<p>|ID| {{ customer.id}}
+		|Customer Name| {{ customers.customerName }} {{customers.surname}}  </p>
+	</div>
+{% endfor %}
+<br>
+<p>Books</p>
+{% for book in books %}
+        <div>
+                <p>|ID| {{ song.id }}
+                |Book Name| {{ book.bookName }}
+                |Author| {{ book.author }}
+                |Loaned?| {{ book.book_loaned }}
+                </p>
+        </div>
+{% endfor %}
+{% endblock %}

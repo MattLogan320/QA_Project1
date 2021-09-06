@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library-App</title>
+</head>
+
+<body>
+    <a href="{{ url_for('home') }}">Home</a>
+			<a href="{{ url_for('addbook') }}">Add Book To Library</a>
+			<a href="{{ url_for('library') }}">Library</a>
+            <a href="{{ url_for('addcustomer') }}">Add Customer</a>
+			<a href="{{ url_for('customerlist') }}">View Customers/Delete Customers/Edit Customers</a>
+			<a href="{{ url_for('borrowbook') }}">Add Book to Customer's borrowed List</a>
+    {% block body_content %}
+    {% endblock body_content %}
+</body>

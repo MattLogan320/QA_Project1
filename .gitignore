@@ -4,4 +4,6 @@ __pycache__
 *.pyc
 #These ignore the cache files created when running unit tests
 chromium/
-#This ignores the chromium directory needed for steting 
+#This ignores the chromium directory needed for testing 
+*.db
+#This ignores any test databases created during development of the app

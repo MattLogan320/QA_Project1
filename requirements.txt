@@ -1,5 +1,4 @@
 flask
-os
 flask_sqlalchemy
 flask_wtf
 

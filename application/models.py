@@ -2,7 +2,7 @@ from application import db
 
 #creating the schema for the books, with the author and availability included
 class Books(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     bookName = db.Column(db.String(150), nullable=False)
     author = db.Column(db.String(100), nullable=False)
     book_loaned = db.Column(db.String(5), nullable=False)

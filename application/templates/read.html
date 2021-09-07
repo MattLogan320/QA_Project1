@@ -1,0 +1,15 @@
+{% extends "layouts.html" %}
+{% block body_content %}
+<br>
+<h1>Customers Book List</h1>
+
+{% for book in books  %}
+	<div>
+                <p>
+                |Book Name| {{ book.bookName }}
+                |Author| {{ book.author }}
+                |Loaned| {{ book.book_loaned }}
+                </p>
+    </div>
+{% endfor %}
+{% endblock %}

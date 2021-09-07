@@ -1,0 +1,22 @@
+{% extends "layouts.html" %}
+{% block body_content %}
+<br>
+<h1>Customer List</h1>
+{% for customer in customers %}
+        <div>
+                <p>
+                |Customer Name| {{ customer.customerName }}
+                |Surname| {{ customer.surname }}
+               </p>
+        </div>
+	<form action="{{ url_for ('customer_delete', id=customer.id) }}">
+		<button type= "submit">Delete Customer</button>
+	</form>
+	<form action="{{ url_for ('edit_customer', id=customer.id) }}">
+                <button type= "submit">Edit Customer Details</button>
+        </form>
+    <form action="{{ url_for('read_customers_borrowed', id= customer.id) }}">
+                <button type= "submit">View Customer Booklist</button>
+        </form>
+{% endfor %}
+{% endblock %}

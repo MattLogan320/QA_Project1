@@ -76,9 +76,9 @@ def read_customers_borrowed(id):
 def book_edit(id):
     book= Books.query.filter_by(id=id).first()
     form= UpdateBookForm()
-    if form.validate_on_submit:
-        book.bookName=form.bookName.data,
-        book.author=form.author.data,
+    if form.validate_on_submit():
+        book.bookName=form.bookName.data
+        book.author=form.author.data
         book.book_loaned=form.book_loaned.data
         db.session.commit()
         return redirect(url_for('library'))
@@ -89,7 +89,7 @@ def book_edit(id):
     return render_template('editbook.html', title= 'Edit Book Details', form=form)
 
 @app.route('/customerlist/edit/<id>', methods=['GET','POST'])
-def edit_customer():
+def edit_customer(id):
     customer=Customers.query.filter_by(id=id).first()
     form=UpdateCustomerForm()
     if form.validate_on_submit():
@@ -100,11 +100,11 @@ def edit_customer():
     elif request.method== 'GET':
         form.customerName.data = customer.customerName
         form.surname.data= customer.surname
-    return render_template('editcustomer', title='Edit customer details', form=form)
+    return render_template('editcustomer.html', title='Edit customer details', form=form)
 
 #Delete Functions
 @app.route('/library/delete/<id>', methods=['GET','POST'])
-def book_delete():
+def book_delete(id):
     customerBook=CustomerBooks.query.join(Books).filter_by(id=id).all()
     for book in customerBook:
         db.session.delete(book)

@@ -1,0 +1,17 @@
+{% extends "layouts.html" %}
+{% block body_content %}
+<br>
+<h1>Edit Customer details</h1>
+        <div class='form'>
+                <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.customerName.label }}
+                {{ form.customerName }}
+                <br>
+                {{ form.surname.label }}
+                {{ form.surname }}
+                <br>
+                {{ form.submit }}
+                </form>
+                </div>
+{% endblock %}

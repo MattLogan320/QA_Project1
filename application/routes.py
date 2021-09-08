@@ -52,9 +52,13 @@ def borrowbook():
 			fk_book_id = form.book.data,
 			fk_customer_id = form.customer.data,
             returnDate = form.returnDate.data
-		)
+		)       
 		db.session.add(customerBook)
 		db.session.commit()
+		return redirect(url_for('customerlist'))
+		
+	else :
+		print('Please fill out all fields')
 	return render_template('addbookcustomer.html', title='Borrow book', books=bookList, customers=customerList, form=form)
 
 #Read Functions

@@ -14,6 +14,7 @@ class TestBase(LiveServerTestCase):
     def create_app(self):
         app.config.update(
         SQLALCHEMY_DATABASE_URI=getenv('LIVE_TEST_DATABASE_URI'),
+        SECRET_KEY=getenv('TEST_SECRET_KEY')
         DEBUG=True,
         WTF_CSRF_ENABLED=False
         )

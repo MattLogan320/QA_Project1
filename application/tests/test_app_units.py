@@ -9,7 +9,7 @@ class TestBase(TestCase):
     def create_app(self):
 
         app.config.update(SQLALCHEMY_DATABASE_URI=getenv('UNIT_TEST_DATABASE_URI'),
-            SECRET_KEY='TEST_SECRET_KEY',
+            SECRET_KEY=getenv('TEST_SECRET_KEY',)
             DEBUG=True,
             WTF_CSRF_ENABLED=False
                 )

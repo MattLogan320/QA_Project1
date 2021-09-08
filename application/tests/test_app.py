@@ -71,9 +71,13 @@ test_add_surname="Corbyn"
 test_add_email="test@email.com"
 test_add_bookID="1"
 test_add_customerID="1"
+test_add_returnDate="01/01/0101"
 test_edit_bookName="It"
 test_edit_author="Stephen King"
 test_edit_book_loaned="Yes"
+test_edit_customerName="Boris"
+test_edit_surname="Johnson"
+test_edit_email="PM@email.com"
 
 
 
@@ -107,7 +111,26 @@ class TestCreateFunctionality(TestBase):
         assert url_for('borrowbook') in self.driver.current_url
     
 
-
+class TestReadFunctionality(TestBase):
+    
+    def test_read_customers_borrowed_books(self):
+        self.driver.find_element_by_xpath('/html/body/a[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="bookName"]').send_keys(test_add_bookName)
+        self.driver.find_element_by_xpath('//*[@id="author"]').send_keys(test_add_author)
+        self.driver.find_element_by_xpath('//*[@id="book_loaned"]').send_keys('No')
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        self.driver.find_element_by_xpath('/html/body/a[4]').click()
+        self.driver.find_element_by_xpath('//*[@id="customerName"]').send_keys(test_add_customerName)
+        self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_add_surname)
+        self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_add_email)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        self.driver.find_element_by_xpath('/html/body/a[6]').click()
+        self.driver.find_element_by_xpath('//*[@id="book"]').send_keys(test_add_bookID)
+        self.driver.find_element_by_xpath('//*[@id="customer"]').send_keys(test_add_customerID)
+        self.driver.find_element_by_xpath('//*[@id="returnDate"]').send_keys(test_add_returnDate)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        self.driver.find_element_by_xpath('/html/body/form[3]/button').click()
+        assert url_for('read_customers_borrowed',id=test_add_customerID) in self.driver.current_url
 
 class TestUpdateFunctionality(TestBase):
 
@@ -117,13 +140,42 @@ class TestUpdateFunctionality(TestBase):
         self.driver.find_element_by_xpath('//*[@id="author"]').send_keys(test_add_author)
         self.driver.find_element_by_xpath('//*[@id="book_loaned"]').send_keys('No')
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
-        self.driver.find_element_by_xpath('/html/body/a[3]').click()
         self.driver.find_element_by_xpath('/html/body/form[2]/button').click()
         self.driver.find_element_by_xpath('//*[@id="bookName"]').send_keys(test_edit_bookName)
         self.driver.find_element_by_xpath('//*[@id="author"]').send_keys(test_edit_author)
         self.driver.find_element_by_xpath('//*[@id="book_loaned"]').send_keys('Yes')
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
         assert url_for('library') in self.driver.current_url
+    
+    def test_edit_customer(self):
+        self.driver.find_element_by_xpath('/html/body/a[4]').click()
+        self.driver.find_element_by_xpath('//*[@id="customerName"]').send_keys(test_add_customerName)
+        self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_add_surname)
+        self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_add_email)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        self.driver.find_element_by_xpath('/html/body/form[2]/button').click()
+        self.driver.find_element_by_xpath('//*[@id="customerName"]').send_keys(test_edit_bookName)
+        self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_edit_author)
+        self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_edit_email)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        assert url_for('customerlist') in self.driver.current_url
 
+class TestDeleteFunctionality(TestBase):
 
-#class TestDeleteFunctionality(TestBase):
+    def test_delete_book(self):
+        self.driver.find_element_by_xpath('/html/body/a[2]').click()
+        self.driver.find_element_by_xpath('//*[@id="bookName"]').send_keys(test_add_bookName)
+        self.driver.find_element_by_xpath('//*[@id="author"]').send_keys(test_add_author)
+        self.driver.find_element_by_xpath('//*[@id="book_loaned"]').send_keys('No')
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        self.driver.find_element_by_xpath('/html/body/form[1]/button').click()
+        assert url_for('library') in self.driver.current_url
+    
+    def test_delete_customer(self):
+        self.driver.find_element_by_xpath('/html/body/a[4]').click()
+        self.driver.find_element_by_xpath('//*[@id="customerName"]').send_keys(test_add_customerName)
+        self.driver.find_element_by_xpath('//*[@id="surname"]').send_keys(test_add_surname)
+        self.driver.find_element_by_xpath('//*[@id="email"]').send_keys(test_add_email)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+        self.driver.find_element_by_xpath('/html/body/form[1]/button').click()
+        assert url_for('customerlist') in self.driver.current_url

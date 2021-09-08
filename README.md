@@ -13,8 +13,10 @@ For this project I decided to design a library app which allows users to upload 
 
 **CI Pipeline:**
 
-In addition to the minimum app design the project also requested implementation of many of the stages of a typical CI pipeline: Project Tracking, Version Control, Development Environment and build server. 
-For Project Tracking a Trello board was used. Items in the product backlog were assigned story points, acceptance criteria and MoSCoW priority and then moved to the sprint backlog where work could then begin on them and they could then move to review when completed as the project progressed.
+In addition to the minimum app design the project also requested implementation of some of the stages of a typical CI pipeline: Project Tracking, Version Control, Development Environment and using a build server. 
+For Project Tracking a Trello board was used. Items in the product backlog were assigned story points, acceptance criteria and MoSCoW priority and then moved to the sprint backlog where work could then begin on them and they could then move to review when completed as the project progressed. At the beginning of the Sprint the Trello board looked something like this:
+![initialSprint](https://user-images.githubusercontent.com/88770784/132550264-eb7c34f5-4ddc-42e4-8f53-65da5f871981.PNG)
+
 
 [**insert trello board picture here**]
 
@@ -36,4 +38,6 @@ Whilst the end product from this project is a functioning webb app that exhibits
 
 When it came to using Jenkins, intitially GitHub could not create a webhook with Jenkins to allow for immediate pulls by Jenkins whenever a push was made to the remote repo. Again this wasn't a huge issue as anything that Jenkins can automate can of course be done manually if needed. 
 
-In the creating of unit tests and integration testing for the application some of the tests devised would 
+In the creating of unit tests and integration testing for the application some of the tests devised would return errors such as "object does not have attribute post" etc. This was because we were initially trying to write tests that interacted with the database in with the integration tests which looked at a live server case. To resolve this issue a second tests file was created which imported TestCase from Flask-Testing as opposed to the LiveServerTestCasing for the selenium driven integration tests.
+
+Also throughout the development of the programs written in this application, there were times where running the code would return an error, which was then (usually) quickly resolved. 

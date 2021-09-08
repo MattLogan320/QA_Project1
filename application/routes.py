@@ -32,7 +32,8 @@ def addcustomer():
     if form.validate_on_submit():
         customerList=Customers(
           customerName=form.customerName.data,
-          surname=form.surname.data  
+          surname=form.surname.data,
+          email=form.email.data  
         )
         db.session.add(customerList)
         db.session.commit()
@@ -49,7 +50,8 @@ def borrowbook():
 	if form.validate_on_submit():
 		customerBook = CustomerBooks(
 			fk_book_id = form.book.data,
-			fk_customer_id = form.customer.data
+			fk_customer_id = form.customer.data,
+            returnDate = form.returnDate.data
 		)
 		db.session.add(customerBook)
 		db.session.commit()
@@ -95,11 +97,13 @@ def edit_customer(id):
     if form.validate_on_submit():
         customer.customerName=form.customerName.data
         customer.surname=form.surname.data
+        customer.email=form.email.data
         db.session.commit()
         return redirect(url_for('customerlist'))
     elif request.method== 'GET':
         form.customerName.data = customer.customerName
         form.surname.data= customer.surname
+        form.email.data= customer.email
     return render_template('editcustomer.html', title='Edit customer details', form=form)
 
 #Delete Functions

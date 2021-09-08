@@ -13,9 +13,11 @@ class Customers(db.Model):
     id =db.Column(db.Integer, primary_key=True)
     customerName = db.Column(db.String(100), nullable=False)
     surname = db.Column(db.String(100), nullable=False)
+    email= db.Column(db.String(150),nullable = True)
     customerBook2= db.relationship('CustomerBooks', backref=db.backref('customer',lazy = True))
 
 class CustomerBooks(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     fk_book_id=db.Column(db.Integer,db.ForeignKey('books.id'))
     fk_customer_id = db.Column(db.Integer,db.ForeignKey('customers.id'))
+    returnDate= db.Column(db.String(50), nullable=False)

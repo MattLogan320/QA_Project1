@@ -28,6 +28,9 @@ class CustomerForm(FlaskForm):
     surname = StringField('Surname',
         validators= [DataRequired(),
                     Length(min=2, max=100)])
+    
+    email = StringField('Email',
+        validators= [Length(min=6, max=150)])
 
     submit= SubmitField('Add')
 
@@ -57,6 +60,9 @@ class UpdateCustomerForm(FlaskForm):
     surname = StringField('Surname',
         validators= [DataRequired(),
                     Length(min=2, max=100)])
+    
+    email = StringField('Email',
+        validators= [Length(min=6, max=150)])
 
     submit= SubmitField('Update Details')
 
@@ -67,4 +73,7 @@ class CustomerBookForm(FlaskForm):
     customer= IntegerField('Customer ID',
         validators= [DataRequired()])
 
+    returnDate= StringField('Return Date',
+        validators= [DataRequired(),
+                    Length(min=6, max=10)])
     submit = SubmitField('Loan out book')

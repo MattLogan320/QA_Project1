@@ -1,8 +1,6 @@
 import unittest
 from flask import url_for
 from urllib.request import urlopen
-
-
 from os import getenv
 from flask_testing import LiveServerTestCase
 from selenium import webdriver
@@ -14,12 +12,12 @@ class TestBase(LiveServerTestCase):
     def create_app(self):
         app.config.update(
         SQLALCHEMY_DATABASE_URI=getenv('LIVE_TEST_DATABASE_URI'),
-        SECRET_KEY=getenv('TEST_SECRET_KEY')
+        SECRET_KEY=getenv('TEST_SECRET_KEY'),
+        
         DEBUG=True,
         WTF_CSRF_ENABLED=False
         )
         return app
-
 
     def setUp(self):
         chrome_options = webdriver.chrome.options.Options()
@@ -63,7 +61,7 @@ class TestButtons(TestBase):
         assert url_for('borrowbook') in self.driver.current_url
 
 
-#Variables
+#Variables for testing
 test_add_bookName="The Very Hungry Caterpillar"
 test_add_author="Eric Carle"
 test_book_loaned="No"
@@ -81,7 +79,6 @@ test_edit_surname="Johnson"
 test_edit_email="PM@email.com"
 
 
-
 class TestCreateFunctionality(TestBase):
 
     def test_add_book_submit_button(self):
@@ -92,7 +89,6 @@ class TestCreateFunctionality(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
         assert url_for('library') in self.driver.current_url
 
-
     
     def test_add_customer_submit_button(self):
         self.driver.find_element_by_xpath('/html/body/a[4]').click()
@@ -102,8 +98,7 @@ class TestCreateFunctionality(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
         assert url_for('customerlist') in self.driver.current_url
     
-    
-
+   
     def test_add_book_to_customers_booklist_submit_button(self):
         self.driver.find_element_by_xpath('/html/body/a[6]').click()
         self.driver.find_element_by_xpath('//*[@id="book"]').send_keys(test_add_bookID)

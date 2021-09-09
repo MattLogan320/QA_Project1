@@ -6,15 +6,15 @@ class Books(db.Model):
     bookName = db.Column(db.String(150), nullable=False)
     author = db.Column(db.String(100), nullable=False)
     book_loaned = db.Column(db.String(5), nullable=False)
-    customerBook1= db.relationship('CustomerBooks', backref=db.backref('book',lazy = True))
+    customerBook1= db.relationship('CustomerBooks', backref='book')
 
 
 class Customers(db.Model):
     id =db.Column(db.Integer, primary_key=True)
     customerName = db.Column(db.String(100), nullable=False)
     surname = db.Column(db.String(100), nullable=False)
-    email= db.Column(db.String(150),nullable = True)
-    customerBook2= db.relationship('CustomerBooks', backref=db.backref('customer',lazy = True))
+    email= db.Column(db.String(150),nullable = False)
+    customerBook2= db.relationship('CustomerBooks', backref='customer')
 
 class CustomerBooks(db.Model):
     id=db.Column(db.Integer,primary_key=True)

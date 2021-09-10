@@ -7,5 +7,6 @@ SQLAlchemy
 PyMySQL
 selenium
 Flask-Testing
+pymysql
 
 

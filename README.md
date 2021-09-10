@@ -26,6 +26,9 @@ Since this app would rely on storing information in a database, the SQLAlchemy e
 **CI Pipeline:**
 
 In addition to the minimum app design the project also requested use of some of the stages of a typical CI pipeline: Project Tracking and Management, Version Control, Development Environment and using a build server. 
+![CI Pipeline drawio](https://user-images.githubusercontent.com/88770784/132874947-256ee532-c987-4c61-9379-3858288db878.png)
+
+
 For Project Tracking a Trello board was used. Items in the product backlog were assigned story points, acceptance criteria and MoSCoW priority and then moved to the sprint backlog where work could then begin on them and they could then move to review when completed as the project progressed. At the beginning of the Sprint the Trello board looked something like this:
 ![initialSprint](https://user-images.githubusercontent.com/88770784/132550264-eb7c34f5-4ddc-42e4-8f53-65da5f871981.PNG)
 
